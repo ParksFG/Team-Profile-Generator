@@ -4,8 +4,8 @@ const fs = require('fs');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
-const Employee = require('./lib/Employee');
 const employees = []
+const generateHTML = require('./src/generateHTML')
 
 // Information for team
 const questionsManager = [
@@ -108,27 +108,42 @@ function engineerQ() {
                 internQ();
             }else {
                 // generateHTML(employees);
-                console.log(employees)
+                const fileName = 'index.html';
+                const data = generateHTML.generateHTML(employees);
+                writeToFile(fileName, data);
+                // console.log(employees);
             }
         });
 }
 // Function for intern questions
 function internQ() {
     inquirer
-    .prompt(questionsIntern)
-    .then((answers) => {
-        const employee = new Intern(answers.employeeName, answers.employeeId, answers.employeeEmail, answers.schoolName);
-        employees.push(employee)
-        if(answers.nextEmployee === "Engineer") {
-            engineerQ();
-        }else if(answers.nextEmployee === "Intern") {
-            internQ();
-        }else {
-            // generateHTML(employees);
-            console.log(employees)
+        .prompt(questionsIntern)
+        .then((answers) => {
+            const employee = new Intern(answers.employeeName, answers.employeeId, answers.employeeEmail, answers.schoolName);
+            employees.push(employee)
+            if(answers.nextEmployee === "Engineer") {
+                engineerQ();
+            }else if(answers.nextEmployee === "Intern") {
+                internQ();
+            }else {
+                // generateHTML(employees);
+                const fileName = 'index.html';
+                const data = generateHTML.generateHTML(employees);
+                writeToFile(fileName, data);
+                // console.log(employees);
         }
     });
 }
+// Function for generating the HTML
+function writeToFile(fileName, data) {
+    fs.writeFile(fileName, data, (err) =>
+        err ? console.error(err) : console.log('Success!')
+    )
+}
+
+
+
 // Function for starting
 function init() {
     inquirer
@@ -142,7 +157,10 @@ function init() {
                 internQ();
             }else {
                 // generateHTML(employees);
-                console.log(employees)
+                const fileName = 'index.html';
+                const data = generateHTML.generateHTML(employees);
+                writeToFile(fileName, data);
+                // console.log(employees);
             }
         });
 }
