@@ -4,7 +4,8 @@ const fs = require('fs');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
-const employeeCount = 1
+const Employee = require('./lib/Employee');
+const employees = []
 
 // Information for team
 const questionsManager = [
@@ -99,9 +100,8 @@ function engineerQ() {
     inquirer
         .prompt(questionsEngineer)
         .then((answers) => {
-            employees.push(answers);
-            employeeCount++;
-            console.log(employeeCount);
+            const employee = new Engineer(answers.employeeName, answers.employeeId, answers.employeeEmail, answers.github);
+            employees.push(employee)
             if(answers.nextEmployee === "Engineer") {
                 engineerQ();
             }else if(answers.nextEmployee === "Intern") {
@@ -117,7 +117,8 @@ function internQ() {
     inquirer
     .prompt(questionsIntern)
     .then((answers) => {
-        employees.push(answers);
+        const employee = new Intern(answers.employeeName, answers.employeeId, answers.employeeEmail, answers.schoolName);
+        employees.push(employee)
         if(answers.nextEmployee === "Engineer") {
             engineerQ();
         }else if(answers.nextEmployee === "Intern") {
@@ -133,7 +134,8 @@ function init() {
     inquirer
         .prompt(questionsManager)
         .then((answers) => {
-            employees.push(answers);
+            const employee = new Manager(answers.employeeName, answers.employeeId, answers.employeeEmail, answers.officeNumber);
+            employees.push(employee)
             if(answers.nextEmployee === "Engineer") {
                 engineerQ();
             }else if(answers.nextEmployee === "Intern") {
