@@ -107,11 +107,9 @@ function engineerQ() {
             }else if(answers.nextEmployee === "Intern") {
                 internQ();
             }else {
-                // generateHTML(employees);
-                const fileName = 'index.html';
+                const fileName = './dist/index.html';
                 const data = generateHTML.generateHTML(employees);
                 writeToFile(fileName, data);
-                // console.log(employees);
             }
         });
 }
@@ -127,23 +125,12 @@ function internQ() {
             }else if(answers.nextEmployee === "Intern") {
                 internQ();
             }else {
-                // generateHTML(employees);
-                const fileName = 'index.html';
+                const fileName = './dist/index.html';
                 const data = generateHTML.generateHTML(employees);
                 writeToFile(fileName, data);
-                // console.log(employees);
         }
     });
 }
-// Function for generating the HTML
-function writeToFile(fileName, data) {
-    fs.writeFile(fileName, data, (err) =>
-        err ? console.error(err) : console.log('Success!')
-    )
-}
-
-
-
 // Function for starting
 function init() {
     inquirer
@@ -156,13 +143,17 @@ function init() {
             }else if(answers.nextEmployee === "Intern") {
                 internQ();
             }else {
-                // generateHTML(employees);
-                const fileName = 'index.html';
+                const fileName = './dist/index.html';
                 const data = generateHTML.generateHTML(employees);
                 writeToFile(fileName, data);
-                // console.log(employees);
             }
         });
+}
+// Function for generating the HTML
+function writeToFile(fileName, data) {
+    fs.writeFile(fileName, data, (err) =>
+        err ? console.error(err) : console.log('Success!')
+    )
 }
 // Starts the app
 init()
