@@ -33,7 +33,7 @@ No contributions needed at this time.
 
 ## Testing Instructions
 
-Will finish this section later.
+To test, all you have to do after `"npm i"` is then run `"npm run test"`.
 
 ## License
 
