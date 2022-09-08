@@ -25,7 +25,7 @@ After cloning the repo, run `"npm i"` to get the dependancies, then all you have
 
 Used for generating a profile of your team members when starting a project.  Easy quick access to engineer's github accounts, everyone's email, manager's office number, and information on potential interns.
 
-[Video Guide](https://drive.google.com/file/d/1r1E2_fRRchw1hoGnInG1C0oraw4y4Pak/view)
+[Video Guide](https://watch.screencastify.com/v/HSaQULxv6J9QNsljNMkg)
 
 ## Contribution Guidelines
 
